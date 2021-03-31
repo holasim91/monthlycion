@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as postActions } from "../redux/modules/post";
 import { actionCreators as imageActions } from "../redux/modules/image";
@@ -30,9 +30,9 @@ if(is_edit){
   dispatch(imageActions.setPreview(_post.image_url))
 }
 },[])
-  const changeContents = (e) =>{
-    setContents(e.target.value)
-  }
+  const changeContents = useCallback((e) => {
+    setContents(e.target.value);
+  }, []);
 
   const addPost=() => {dispatch(postActions.addPostFB(contents, layout_type))}
   const editPost = () =>{

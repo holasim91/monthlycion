@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { Input, Text, Grid, Button } from "../elements";
 import { useDispatch } from "react-redux";
 import { actionCreators as userActions } from "../redux/modules/user";
@@ -7,8 +7,10 @@ import { emailCheck } from "../shared/common";
 const Login = (props) => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState('')
-  const [pwd, setPwd] = useState('')
+  const onChnageEmail = useCallback((e) => setEmail(e.target.value),[])
 
+  const [pwd, setPwd] = useState('')
+  const onChangePwd = useCallback((e) => setPwd(e.target.value),[])
   const login = () => {
     if(email===''||pwd===''){
       window.alert(
@@ -36,9 +38,7 @@ const Login = (props) => {
           <Input
             label="아이디"
             placeholder="아이디를 입력해주세요"
-            _onChange={(e) => {
-              setEmail(e.target.value);
-            }}
+            _onChange={onChnageEmail}
           />
         </Grid>
         <Grid padding="16px 0">
@@ -46,7 +46,7 @@ const Login = (props) => {
           type='password'
             label="비밀번호"
             placeholder="비밀번호를 입력해주세요"
-            _onChange={(e) => setPwd(e.target.value)}
+            _onChange={onChangePwd}
             value={pwd}
             is_submit
             onSubmit={login}

@@ -15,7 +15,6 @@ const Header = (props) => {
 
   const is_login = useSelector((state) => state.user.is_login);
 const user_info = useSelector((state) => state.user.user)
-console.log(user_info)
   const _session_key = `firebase:authUser:${apiKey}:[DEFAULT]`;
 
   const is_session = sessionStorage.getItem(_session_key) ? true : false;
@@ -32,8 +31,6 @@ console.log(user_info)
 
           <Grid is_flex>
             <Button text="홈으로" _onClick={()=>history.push('/')} />
-
-            <Button text="알림" _onClick={()=>history.push('/noti')} />
             <NotiBadge _onClick={()=>history.push('/noti')} />
             <Button
               text="로그아웃"

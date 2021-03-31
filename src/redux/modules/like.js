@@ -34,7 +34,6 @@ const setLikeFB = (user_id) =>{
 }
 
 const deleteLikeFB = (post_id) =>{
-    console.log('Delete Like FB')
     return function(dispatch, getState, {history}){
         const likeDB = firestore.collection('like')
         const _user = getState().user.user;
@@ -42,7 +41,6 @@ const deleteLikeFB = (post_id) =>{
         likeRef.update({
             like_posts: firebase.firestore.FieldValue.arrayRemove(`${post_id}`)
         }).then(()=>{
-            console.log('delete Like')
         })
         const postDB = firestore.collection("post");
         const post = getState().post.list.find((l) => l.id === post_id);
@@ -75,7 +73,6 @@ const addLikeFB = (post_id) =>{
         likeRef.update({
             like_posts: firebase.firestore.FieldValue.arrayUnion(`${post_id}`)
         }).then(()=>{
-            console.log('add Like')
         })
         
         const postDB = firestore.collection("post");
@@ -96,7 +93,6 @@ const addLikeFB = (post_id) =>{
               // 전체를 다 넣는다는 생각으로 만들고, 마지막에 if문으로
               // 시간을 어디서 끌고온담
               const _noti_item = realtime.ref(`noti/${post.user_info.user_id}/list`).push()
-              console.log(user_info)
               _noti_item.set({
                 post_id: post.id,
                 user_name:  user_info.name,
@@ -107,7 +103,6 @@ const addLikeFB = (post_id) =>{
                     console.log('알람저장 실패')
                 }else{
                   const notiDB = realtime.ref(`noti/${post.user_info.user_id}`)
-                  console.log()
                   if(post.user_info.user_id === user_info.uid){
                     return
                   }

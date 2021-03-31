@@ -84,7 +84,6 @@ const signupFB = (email, pwd, name) => {
               like_posts: [],
             })
             .then(() => {
-              console.log("좋아요 collection 추가 성공!");
             })
             .catch((e) => {
               console.error(e);

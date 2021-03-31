@@ -46,16 +46,13 @@ const initialPost = {
 
 const deletePostFB = (post_id = null) =>{
   return function(dispatch, getState, {history}){
-    console.log('DELETE FROM FB')
     if (!post_id) {
       console.log("게시물 정보가 없어용");
       return;
     }
     const postDB = firestore.collection("post");
-    console.log(postDB)
     postDB.doc(`${post_id}`).delete().then(() => {
       dispatch(deletePost(post_id))
-      console.log("Document successfully deleted!");
       window.alert('삭제 성공')
       history.replace("/");
   }).catch((error) => {
@@ -97,7 +94,6 @@ const editPostFB = (post_id = null, post = {}) => {
         snapshot.ref
           .getDownloadURL()
           .then((url) => {
-            console.log(url);
             return url;
           })
           .then((url) => {
@@ -135,7 +131,6 @@ const addPostFB = (contents = "", layout_type='') => {
     };
 
     const _image = getState().image.preview;
-    // console.log(_image)
 
     const _upload = storage
       .ref(`images/${user_info.user_id}_${new Date().getTime()}`)

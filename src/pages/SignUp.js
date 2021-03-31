@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Button, Grid, Input, Text } from "../elements";
 import { actionCreators as userActions } from "../redux/modules/user";
@@ -8,14 +8,18 @@ const SignUp = () => {
   const dispatch = useDispatch();
 
   const [email, setEmail] = useState("");
+  const onChnageEmail = useCallback((e) => setEmail(e.target.value),[])
   const [nickname, setNickname] = useState("");
+  const onChnageNickname = useCallback((e) => setNickname(e.target.value),[])
   const [pwd, setPwd] = useState("");
+  const onChangePwd = useCallback((e) => setPwd(e.target.value),[])
   const [pwdCheck, setPwdCheck] = useState("");
+  const onChangePwdCheck = useCallback((e) => setPwdCheck(e.target.value),[])
 
 
   const signup = () => {
     if (email === "" || pwd === "" || nickname === "") {
-      window.alert("아이디/패스워드/닉네임을 모두 입력해주세요");
+      window.alert("이메일/패스워드/닉네임을 모두 입력해주세요");
       return;
     }
 
@@ -41,9 +45,9 @@ const SignUp = () => {
 
         <Grid padding="16px 0">
           <Input
-            label="아이디"
-            placeholder="아이디를 입력해주세요"
-            _onChange={(e) => setEmail(e.target.value)}
+            label="이메일"
+            placeholder="이메일을 입력해주세요"
+            _onChange={onChnageEmail}
           />
         </Grid>
 
@@ -51,7 +55,7 @@ const SignUp = () => {
           <Input
             label="닉네임"
             placeholder="닉네임를 입력해주세요"
-            _onChange={(e) => setNickname(e.target.value)}
+            _onChange={onChnageNickname}
           />
         </Grid>
 
@@ -60,7 +64,7 @@ const SignUp = () => {
             type="password"
             label="비밀번호"
             placeholder="비밀번호를 입력해주세요"
-            _onChange={(e) => setPwd(e.target.value)}
+            _onChange={onChangePwd}
           />
         </Grid>
 
@@ -69,7 +73,7 @@ const SignUp = () => {
             type="password"
             label="비밀번호 확인"
             placeholder="비밀번호를  다시 입력해주세요"
-            _onChange={(e) => setPwdCheck(e.target.value)}
+            _onChange={onChangePwdCheck}
           />
         </Grid>
 
