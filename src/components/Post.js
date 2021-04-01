@@ -33,9 +33,7 @@ const Post = (props) => {
                   width="auto"
                   margin="4px"
                   text="수정"
-                  _onClick={() => {
-                    history.push(`write/${props.id}`);
-                  }}
+                  _onClick ={()=>{history.push(`/write/${props.id}`)}}
                 />
                 <Button
                   padding="4px"

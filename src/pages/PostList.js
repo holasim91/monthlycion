@@ -14,11 +14,12 @@ const PostList = (props) => {
     const paging = useSelector((state) => state.post.paging);
     const {history} =props
     useEffect(() => {
-      if (post_list.length < 2) {
+  
+      if (post_list.length < 2) {  
         dispatch(postActions.getPostFB());
       }
     }, []);
-  
+
     return (
       <>
       <Grid bg={"#EFF6FF"} padding="20px 0px">
