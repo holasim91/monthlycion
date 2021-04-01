@@ -7,7 +7,6 @@ import { history } from "../redux/configStore";
 
 import { apiKey } from "../shared/firebase";
 import NotiBadge from "./NotiBadge";
-// import NotiBadge from "./NotiBadge";
 
 const Header = (props) => {
   
@@ -25,11 +24,11 @@ const user_info = useSelector((state) => state.user.user)
         <Grid is_flex padding="0 16px">
           <Grid>
             <Text margin="0px" size="24px" bold>
-              {`${user_info.name}님! 아룡하세요!!`}
+              {`${user_info.name}님! 안녕하세요!!`}
             </Text>
           </Grid>
 
-          <Grid is_flex>
+          <Grid is_flex width='50%'>
             <Button text="홈으로" _onClick={()=>history.push('/')} />
             <NotiBadge _onClick={()=>history.push('/noti')} />
             <Button
@@ -47,7 +46,7 @@ const user_info = useSelector((state) => state.user.user)
       <Grid is_flex padding="0 16px">
         <Grid>
           <Text margin="0px" size="24px" bold>
-            아룡하세요!
+            안녕하세요!!
           </Text>
         </Grid>
 

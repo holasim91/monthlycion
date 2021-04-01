@@ -51,7 +51,6 @@ const GridBox = styled.div`
   ${(props)=> props.center ? `text-align: center;` : ''}    
   ${(props)=> props.border ? `border: 1px solid #ccc ;` : ''}    
   ${(props)=> props.border_bottom ? `border-bottom: 1px solid #ccc ;` : ''}    
-  ${(props)=> props.hover ? `&:hover{border: 2px solid #5f939a};` : ''}    
 
   
 `;
